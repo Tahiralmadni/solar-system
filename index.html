@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Voyage</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- GSAP CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Stars -->
+    <canvas id="starfield"></canvas>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Navigation Dots -->
+    <nav>
+        <div class="nav-dot" data-label="Start" onclick="scrollToSection('#hero')"></div>
+        <div class="nav-dot" data-label="Sun" onclick="scrollToSection('#sun')"></div>
+        <div class="nav-dot" data-label="Mercury" onclick="scrollToSection('#mercury')"></div>
+        <div class="nav-dot" data-label="Venus" onclick="scrollToSection('#venus')"></div>
+        <div class="nav-dot" data-label="Earth" onclick="scrollToSection('#earth')"></div>
+        <div class="nav-dot" data-label="Mars" onclick="scrollToSection('#mars')"></div>
+        <div class="nav-dot" data-label="Jupiter" onclick="scrollToSection('#jupiter')"></div>
+        <div class="nav-dot" data-label="Saturn" onclick="scrollToSection('#saturn')"></div>
+        <div class="nav-dot" data-label="Uranus" onclick="scrollToSection('#uranus')"></div>
+        <div class="nav-dot" data-label="Neptune" onclick="scrollToSection('#neptune')"></div>
+    </nav>
+
+    <!-- Back to Top -->
+    <div id="back-to-top" onclick="scrollToSection('#hero')">↑</div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="content-wrapper">
+            <h1>Cosmic<br>Voyage</h1>
+            <p style="font-size: 1.5rem; max-width: 600px;">Embark on a cinematic journey through our cosmic neighborhood. Scroll to explore.</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Sun -->
+    <section id="sun">
+        <div class="content-wrapper">
+            <div class="planet-visual">
+                <svg class="planet-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                            <stop offset="0%" style="stop-color:#fff7e6;stop-opacity:1" />
+                            <stop offset="20%" style="stop-color:#ffcc00;stop-opacity:1" />
+                            <stop offset="60%" style="stop-color:#ff6600;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#cc2200;stop-opacity:1" />
+                        </radialGradient>
+                        <filter id="sunGlow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+                        </filter>
+                    </defs>
+                    <circle cx="250" cy="250" r="200" fill="url(#sunGradient)" filter="url(#sunGlow)" opacity="0.6" />
+                    <circle cx="250" cy="250" r="180" fill="url(#sunGradient)" />
+                </svg>
+            </div>
+            <div class="planet-info">
+                <h2 style="color: #ffaa00;">The Sun</h2>
+                <p>The star at the center of our Solar System. It is a nearly perfect sphere of hot plasma, heated to incandescence by nuclear fusion reactions in its core.</p>
+                <ul class="facts-list">
+                    <li><strong>Massive Scale:</strong> The Sun accounts for 99.86% of the total mass of the entire Solar System.</li>
+                    <li><strong>Nuclear Powerhouse:</strong> Every second, it fuses about 600 million tons of hydrogen into helium.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mercury -->
+    <section id="mercury">
+        <div class="content-wrapper">
+            <div class="planet-visual">
+                <svg class="planet-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="mercuryGradient" cx="30%" cy="30%" r="70%">
+                            <stop offset="0%" style="stop-color:#e0e0e0;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#5a5a5a;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="150" fill="url(#mercuryGradient)" />
+                    <!-- Craters -->
+                    <circle cx="200" cy="200" r="20" fill="rgba(0,0,0,0.2)" />
+                    <circle cx="300" cy="280" r="30" fill="rgba(0,0,0,0.15)" />
+                    <circle cx="240" cy="320" r="15" fill="rgba(0,0,0,0.2)" />
+                </svg>
+            </div>
+            <div class="planet-info">
+                <h2 style="color: #a5a5a5;">Mercury</h2>
+                <p>The smallest planet in the Solar System and the closest to the Sun. Its surface is heavily cratered and similar in appearance to the Moon.</p>
+                <ul class="facts-list">
+                    <li><strong>Extreme Temperatures:</strong> Despite being closest to the Sun, it's not the hottest planet, but has extreme temperature swings from -173°C to 427°C.</li>
+                    <li><strong>Short Year:</strong> A year on Mercury takes only 88 Earth days.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venus -->
+    <section id="venus">
+        <div class="content-wrapper">
+            <div class="planet-visual">
+                <svg class="planet-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="venusGradient" cx="40%" cy="40%" r="60%">
+                            <stop offset="0%" style="stop-color:#fff5d6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#d4a017;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="170" fill="url(#venusGradient)" />
+                    <!-- Atmosphere swirls -->
+                    <path d="M150,250 Q250,200 350,250" stroke="rgba(255,255,255,0.2)" stroke-width="20" fill="none" />
+                    <path d="M120,280 Q250,350 380,280" stroke="rgba(212, 160, 23, 0.2)" stroke-width="30" fill="none" />
+                </svg>
+            </div>
+            <div class="planet-info">
+                <h2 style="color: #e3bb76;">Venus</h2>
+                <p>The second planet from the Sun. It has a dense atmosphere of carbon dioxide that traps heat, making it the hottest planet in our solar system.</p>
+                <ul class="facts-list">
+                    <li><strong>Backward Spin:</strong> Venus rotates in the opposite direction to most other planets (retrograde rotation).</li>
+                    <li><strong>Long Day:</strong> A day on Venus is longer than a year on Venus.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earth -->
+    <section id="earth">
+        <div class="content-wrapper">
+            <div class="planet-visual">
+                <svg class="planet-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="oceanGradient" cx="40%" cy="40%" r="60%">
+                            <stop offset="0%" style="stop-color:#4f8bf5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#002b5e;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="175" fill="url(#oceanGradient)" />
+                    <!-- Continents (Simplified) -->
+                    <path d="M180,180 Q220,150 250,180 T320,200 T350,250 T300,320 T220,300 T180,250 Z" fill="#4caf50" opacity="0.8" />
+                    <path d="M350,150 Q380,180 370,220" fill="#4caf50" opacity="0.8" />
+                    <!-- Atmosphere -->
+                    <circle cx="250" cy="250" r="175" fill="url(#oceanGradient)" opacity="0.2" stroke="#4f8bf5" stroke-width="2" />
+                </svg>
+            </div>
+            <div class="planet-info">
+                <h2 style="color: #4f8bf5;">Earth</h2>
+                <p>Our home. The third planet from the Sun and the only astronomical object known to harbor life. It has a liquid water surface and a protective atmosphere.</p>
+                <ul class="facts-list">
+                    <li><strong>Blue Marble:</strong> About 71% of Earth's surface is covered with water.</li>
+                    <li><strong>Dynamic Planet:</strong> Earth is the only planet in our solar system with active plate tectonics.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mars -->
+    <section id="mars">
+        <div class="content-wrapper">
+            <div class="planet-visual">
+                <svg class="planet-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="marsGradient" cx="40%" cy="40%" r="60%">
+                            <stop offset="0%" style="stop-color:#ff8a65;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#bf360c;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="140" fill="url(#marsGradient)" />
+                    <!-- Ice Cap -->
+                    <path d="M200,130 Q250,110 300,130 Q250,150 200,130 Z" fill="#fff" opacity="0.8" />
+                    <!-- Dark Spot -->
+                    <circle cx="280" cy="280" r="30" fill="rgba(0,0,0,0.2)" />
+                </svg>
+            </div>
+            <div class="planet-info">
+                <h2 style="color: #ff6b6b;">Mars</h2>
+                <p>The fourth planet from the Sun, often called the "Red Planet" due to reddish iron oxide prevalent on its surface.</p>
+                <ul class="facts-list">
+                    <li><strong>Giant Volcano:</strong> Mars is home to Olympus Mons, the largest volcano in the solar system, three times the height of Everest.</li>
+                    <li><strong>Dust Storms:</strong> It has the largest dust storms in the solar system, capable of covering the entire planet for months.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jupiter -->
+    <section id="jupiter">
+        <div class="content-wrapper">
+            <div class="planet-visual">
+                <svg class="planet-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="jupiterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#d4a373;stop-opacity:1" />
+                            <stop offset="20%" style="stop-color:#e6b89c;stop-opacity:1" />
+                            <stop offset="40%" style="stop-color:#d4a373;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#a98467;stop-opacity:1" />
+                            <stop offset="60%" style="stop-color:#d4a373;stop-opacity:1" />
+                            <stop offset="80%" style="stop-color:#e6b89c;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#d4a373;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="220" fill="url(#jupiterGradient)" />
+                    <!-- Great Red Spot -->
+                    <ellipse cx="320" cy="300" rx="40" ry="25" fill="#a52a2a" opacity="0.8" />
+                </svg>
+            </div>
+            <div class="planet-info">
+                <h2 style="color: #d4a373;">Jupiter</h2>
+                <p>The largest planet in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets combined.</p>
+                <ul class="facts-list">
+                    <li><strong>The Great Red Spot:</strong> A giant storm bigger than Earth that has raged for hundreds of years.</li>
+                    <li><strong>Many Moons:</strong> Jupiter has 95 known moons, including the four large Galilean moons.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Saturn -->
+    <section id="saturn">
+        <div class="content-wrapper">
+            <div class="planet-visual">
+                <svg class="planet-svg" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="saturnGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#e0c9a6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#c2a87e;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#8d7b68;stop-opacity:0.8" />
+                            <stop offset="50%" style="stop-color:#e0c9a6;stop-opacity:0.9" />
+                            <stop offset="100%" style="stop-color:#8d7b68;stop-opacity:0.8" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Back Ring -->
+                    <path d="M100,200 Q300,120 500,200" fill="none" stroke="url(#ringGradient)" stroke-width="40" opacity="0.8" />
+                    <!-- Planet Body -->
+                    <circle cx="300" cy="200" r="100" fill="url(#saturnGradient)" />
+                    <!-- Front Ring -->
+                    <path d="M100,200 Q300,280 500,200" fill="none" stroke="url(#ringGradient)" stroke-width="40" opacity="0.9" />
+                </svg>
+            </div>
+            <div class="planet-info">
+                <h2 style="color: #e0c9a6;">Saturn</h2>
+                <p>The sixth planet from the Sun and the second-largest. It is most famous for its stunning ring system, composed mainly of ice particles with a smaller amount of rocky debris.</p>
+                <ul class="facts-list">
+                    <li><strong>Low Density:</strong> Saturn is the only planet in our solar system that is less dense than water.</li>
+                    <li><strong>Hexagon Storm:</strong> There is a persisting hexagonal cloud pattern around the north pole.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uranus -->
+    <section id="uranus">
+        <div class="content-wrapper">
+            <div class="planet-visual">
+                <svg class="planet-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="uranusGradient" cx="40%" cy="40%" r="60%">
+                            <stop offset="0%" style="stop-color:#a6f0ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#7de3f4;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="160" fill="url(#uranusGradient)" />
+                    <!-- Ring (Vertical) -->
+                    <ellipse cx="250" cy="250" rx="20" ry="220" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" transform="rotate(15, 250, 250)" />
+                </svg>
+            </div>
+            <div class="planet-info">
+                <h2 style="color: #7de3f4;">Uranus</h2>
+                <p>The seventh planet from the Sun. It has the third-largest planetary radius and fourth-largest planetary mass in the Solar System.</p>
+                <ul class="facts-list">
+                    <li><strong>Tilted Giant:</strong> Uranus rotates at a nearly 90-degree angle from the plane of its orbit, appearing to roll on its side.</li>
+                    <li><strong>Ice Giant:</strong> Its atmosphere is composed of hydrogen and helium, but it contains more "ices" like water, ammonia, and methane.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neptune -->
+    <section id="neptune">
+        <div class="content-wrapper">
+            <div class="planet-visual">
+                <svg class="planet-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="neptuneGradient" cx="40%" cy="40%" r="60%">
+                            <stop offset="0%" style="stop-color:#4b6cb7;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#182848;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="160" fill="url(#neptuneGradient)" />
+                    <!-- Dark Spot -->
+                    <ellipse cx="200" cy="200" rx="30" ry="20" fill="rgba(0,0,0,0.3)" />
+                    <!-- Clouds -->
+                    <path d="M250,150 Q300,140 350,160" stroke="rgba(255,255,255,0.4)" stroke-width="5" fill="none" />
+                </svg>
+            </div>
+            <div class="planet-info">
+                <h2 style="color: #3e54e8;">Neptune</h2>
+                <p>The eighth and farthest-known Solar planet from the Sun. It is dark, cold, and whipped by supersonic winds.</p>
+                <ul class="facts-list">
+                    <li><strong>Fastest Winds:</strong> Winds on Neptune can reach up to 2,100 km/h (1,300 mph).</li>
+                    <li><strong>Mathematical Discovery:</strong> Neptune was the first planet located through mathematical calculations rather than observation.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- External JS -->
+    <script src="script.js"></script>
+</body>
+</html>
